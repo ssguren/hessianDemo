@@ -119,6 +119,29 @@
      <url-pattern>/api/service/*</url-pattern>
   </servlet-mapping>
   
+   <!-- 定义hessian认证 -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Hessian Security</web-resource-name>
+            <url-pattern>/api/service/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>HessianDemo</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- Define the Login Configuration for this Application -->
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>Hessian Security</realm-name>
+    </login-config>
+
+    <!-- Security roles referenced by this web application -->
+    <security-role>
+        <description></description>
+        <role-name>HessianDemo</role-name>
+    </security-role>
+  
   <!-- cxf -->
   <servlet>
     <servlet-name>CXFServlet</servlet-name>

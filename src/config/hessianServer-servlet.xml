@@ -14,11 +14,21 @@
 	<context:annotation-config />
 	
 	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+	<!-- 
+	 -->
 	<bean id="advertService" class="com.servicecenter.service.hessian.impl.AdvertHessianService" />
 	<bean name="/advertService"
               class="org.springframework.remoting.caucho.HessianServiceExporter">
               <property name="service" ref="advertService" />
               <property name="serviceInterface" value="com.servicecenter.service.hessian.IAdvertHessianService" />
+       </bean>
+       <!-- 
+        -->
+	<bean id="authHessianService" class="com.servicecenter.service.hessian.impl.AuthHessianService" />
+	<bean name="/authService"
+              class="com.servicecenter.service.hessian.exporter.HessianAuthExporter">
+              <property name="service" ref="authHessianService" />
+              <property name="serviceInterface" value="com.servicecenter.service.hessian.IAuthHessianService" />
        </bean>
 	
 </beans>
